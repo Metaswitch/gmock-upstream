@@ -27,7 +27,10 @@ GMOCK_DIR = ..
 USER_DIR = ../test
 
 # Flags passed to the preprocessor.
-CPPFLAGS += -I$(GTEST_DIR)/include -I$(GMOCK_DIR)/include
+# Set Google Test and Google Mock's header directories as system
+# directories, such that the compiler doesn't generate warnings in
+# these headers.
+CPPFLAGS += -isystem $(GTEST_DIR)/include -isystem $(GMOCK_DIR)/include
 
 # Flags passed to the C++ compiler.
 CXXFLAGS += -g -Wall -Wextra -pthread
